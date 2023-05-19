@@ -1,0 +1,20 @@
+.statisstic__list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.statisstic__item {
+  width: 400px;
+  display: flex;
+  justify-content: space-between;
+  text-transform: uppercase;
+  color: rgb(84, 84, 253);
+  pointer-events: none;
+}
+
+.statistic__text {
+  color: rgb(0, 0, 0);
+}
