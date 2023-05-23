@@ -25,28 +25,21 @@ export default function App() {
         throw new Error(`No options for ${name}`);
     }
   };
-  // const handleGoodButtonClick = () => {
-  //   setGood(prevState => prevState + 1);
-  // };
-  // const handleNeutralButtonClick = () => {
-  //   setNeutral(prevState => prevState + 1);
-  // };
-  // const handleBadButtonClick = () => {
-  //   setBad(prevState => prevState + 1);
-  // };
 
-  const countTotalFeedbacks = (() => {
+  const countTotalFeedbacks = () => {
     return Object.values({ good, neutral, bad }).reduce(
       (acc, value) => acc + value,
       0
     );
-  })();
+  };
 
-  const countPositiveFedbacks = (() => {
-    return countTotalFeedbacks !== 0
-      ? Math.round((good / countTotalFeedbacks) * 100)
-      : 0;
-  })();
+  const countTotal = countTotalFeedbacks();
+
+  const countPositiveFedbacks = () => {
+    return countTotal !== 0 ? Math.round((good / countTotal) * 100) : 0;
+  };
+
+  const countPositive = countPositiveFedbacks();
 
   return (
     <div className="container">
@@ -58,15 +51,15 @@ export default function App() {
       </Section>
 
       <Section title="Statistics">
-        {countTotalFeedbacks === 0 ? (
+        {countTotal === 0 ? (
           <Notification message={'There is no feedbacks, yet'} />
         ) : (
           <Statistics
             good={good}
             neutral={neutral}
             bad={bad}
-            total={countTotalFeedbacks}
-            precentage={countPositiveFedbacks}
+            total={countTotal}
+            precentage={countPositive}
           ></Statistics>
         )}
       </Section>
