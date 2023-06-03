@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
-import { Statistics } from './Statistics/Statistics';
-import { Section } from './Section/Section';
-import { Notification } from './Notification/Notification';
+import { FeedbackOptions } from '../FeedbackOptions/FeedbackOptions';
+import { Statistics } from '../Statistics/Statistics';
+import { Section } from '../Section/Section';
+import { Notification } from '../Notification/Notification';
+import { Container } from './App.styled';
 
 export default function App() {
   const [good, setGood] = useState(0);
@@ -42,7 +43,7 @@ export default function App() {
   const countPositive = countPositiveFedbacks();
 
   return (
-    <div className="container">
+    <Container>
       <Section title="Please leave feedback">
         <FeedbackOptions
           options={Object.keys({ good, neutral, bad })}
@@ -63,7 +64,7 @@ export default function App() {
           ></Statistics>
         )}
       </Section>
-    </div>
+    </Container>
   );
 }
 // }

@@ -1,21 +1,21 @@
 import PropTypes from 'prop-types';
-import css from './FeedbackOptions.module.css';
+import { Wrapper, Btn } from './FeedbackOptions.styled';
+
 export const FeedbackOptions = ({ options, onLeaveFeedback }) => (
-  <div className={css.feedback__container}>
+  <Wrapper>
     {options.map(option => (
       <div key={option}>
-        <button
-          className={css.feedback__btn}
+        <Btn
           type="button"
           onClick={() => {
             onLeaveFeedback(option);
           }}
         >
           {option}
-        </button>
+        </Btn>
       </div>
     ))}
-  </div>
+  </Wrapper>
 );
 
 FeedbackOptions.propTypes = {
